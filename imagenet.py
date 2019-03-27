@@ -352,7 +352,7 @@ def train(train_loader, model, criterion, optimizer, epoch, writer):
         loss.backward()
         optimizer.step()
         
-        writer.add_scalars('loss_per_itr', {'train loss forward': loss_forward.mean(), 'train loss backward': loss.item()}, (len(train_loader)*epoch + i+1))
+        writer.add_scalars('loss_per_itr', {'train loss forward': loss_forward.mean()}, (len(train_loader)*epoch + i+1))
         writer.add_scalars('accuracy train', {'top1 accuracy': top1.avg, 'top5 accuracy': top5.avg}, (len(train_loader)*epoch + i+1))
         if (i % args.saving_fr)==0:
             feats_file_name='tr_ep{:003d}_itr{:006d}.pt'.format(epoch+1,i+1)
